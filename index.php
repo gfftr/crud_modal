@@ -7,8 +7,8 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
 
  <!-- Bootstrap CSS -->
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
 
 
  <title>Hello, world!</title>
@@ -19,16 +19,18 @@
  <div class="px-4 py-5 my-5 text-center">
   <h1 class="display-5 fw-bold">Update modal</h1>
   <div class="col-lg-6 mx-auto">
-   <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most
-    popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive
-    prebuilt components, and powerful JavaScript plugins.</p>
-   <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#studentaddmodal">
-     Launch demo modal
-    </button>
-   </div>
 
+
+   <div class="card">
+    <h2> PHP CRUD Bootstrap MODAL (POP UP Modal) </h2>
+   </div>
+   <div class="card">
+    <div class="card-body">
+     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#studentaddmodal">
+      ADD DATA
+     </button>
+    </div>
+   </div>
 
 
 
@@ -151,10 +153,6 @@
   </div>
  </div>
 
-
-
-
-
  <!-- EDIT POP UP FORM (Bootstrap MODAL) -->
  <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
@@ -207,23 +205,32 @@
 
 
 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
 
 
+ <script>
+ $().ready(function() {
+  $('.editbtn').on('click', function() {
+   $('#editmodal').modal('show');
 
+   $tr = $(this).closest('tr');
 
+   var data = $tr.children("td").map(function() {
+    return $(this).text();
+   }).get();
 
+   $('#update_id').val(data[0]);
+   $('#fname').val(data[1]);
+   $('#lname').val(data[2]);
+   $('#course').val(data[3]);
+   $('#contact').val(data[4]);
 
-
-
-
-
-
-
-
- <!-- Option 1: Bootstrap Bundle with Popper -->
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-
+  });
+ })
+ </script>
 
 </body>
 
