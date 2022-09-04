@@ -4,7 +4,7 @@
 ![Screenshot](img/crud_modal1.png)
 
 
- <script>
+```
  $().ready(function() {
   $('.editbtn').on('click', function() {
    $('#editmodal').modal('show');
@@ -23,5 +23,5 @@
 
   });
  })
- </script>
+```
 
