@@ -4,7 +4,7 @@
 ![Screenshot](img/crud_modal1.png)
 
 
-```jquery
+```js
  $().ready(function() {
   $('.editbtn').on('click', function() {
    $('#editmodal').modal('show');
