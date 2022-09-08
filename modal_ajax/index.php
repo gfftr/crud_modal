@@ -1,7 +1,14 @@
+<?php
+$connect = mysqli_connect("localhost", "root", "", "students");
+$query = "SELECT * FROM tbl_employee";
+$result = mysqli_query($connect, $query);
+?>
+
+
 <html>
 
 <head>
- <title>Webslesson Tutorial | Bootstrap Modal with Dynamic MySQL Data using Ajax & PHP</title>
+ <title>modal ajax jquery</title>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -10,9 +17,11 @@
 <body>
  <br /><br />
  <div class="container" style="width:700px;">
-  <h3 align="center">Bootstrap Modal with Dynamic MySQL Data using Ajax & PHP</h3>
+  <h3 align="center">Bootstrap Modal with Ajax</h3>
   <br />
   <div class="table-responsive">
+
+
    <table class="table table-bordered">
     <tr>
      <th width="70%">Employee Name</th>
@@ -50,5 +59,23 @@
   </div>
  </div>
 </div>
+<script>
+$(document).ready(function() {
+ $('.view_data').click(function() {
+  var employee_id = $(this).attr("id");
+  $.ajax({
+   url: "select.php",
+   method: "post",
+   data: {
+    employee_id: employee_id
+   },
+   success: function(data) {
+    $('#employee_detail').html(data);
+    $('#dataModal').modal("show");
+   }
+  });
+ });
+});
+</script>
 
 </html>
